@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import Main from "../main/main";
-import { QuizzApp, TodoApss, Calcu, WeatherApp } from "./quizzApp.tsx";
+import { QuizzApp, TodoApss, Calcu, WeatherApp, ArrayMethod } from "./quizzApp.tsx";
+import { globalLoaderLoading } from "../../store/store.tsx";
+
 const Crud = () => {
+  const { openLoader, closeGobalLoader, openGlobalLoader } =
+    globalLoaderLoading();
   const sampleApps = [
     { title: "Todo Apps" },
     { title: "Calculator" },
-    { title: "Quizz Apps" },
+    { title: "Quizz Apps" }, 
     { title: "Weather Apps" },
+    { title: "Array Methods" },
+
   ];
   const ownStyle = {
     height: "5rem",
@@ -19,9 +25,11 @@ const Crud = () => {
   };
 
   const [todo, openTodo] = useState<boolean>(false);
-  const [calculator, opencalculator] = useState<boolean>(false);
+  const [calculator, opencalculator] = useState<boolean>(true);
   const [quizApp, openquizApp] = useState<boolean>(false);
-  const [weattherapp, setweattherapp] = useState<boolean>(true);
+  const [weattherapp, setweattherapp] = useState<boolean>(false);
+  const [arrays, setarray] = useState<boolean>(false);
+
   const [selected, setSelected] = useState<String>("");
 
   const showGames = (game: string) => {
@@ -42,6 +50,9 @@ const Crud = () => {
     if (game === "Weather Apps") {
       setweattherapp(true);
     }
+    if (game === "Array Methods") {
+      setarray(true);
+    }
   };
 
   return (
@@ -58,6 +69,7 @@ const Crud = () => {
           </div>
         ))}
       </div>
+
       {todo && (
         <div>
           <div>
@@ -79,8 +91,14 @@ const Crud = () => {
       )}
       {weattherapp && (
         <div>
-          <WeatherApp/>
+          <WeatherApp />
         </div>
+      )}
+
+      {arrays && (
+        <>
+        <ArrayMethod/>
+        </>
       )}
     </Main>
   );

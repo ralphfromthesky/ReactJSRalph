@@ -1,8 +1,6 @@
 import React from 'react'
 
 export const ReusableButtons = (props: any) => {
-
-
     const ownStyle = {
         backgroundColor: props.bg,
         height: props.height,
@@ -16,3 +14,9 @@ export const ReusableButtons = (props: any) => {
   )
 }
 
+export const ReusableModal = () => {
+  return (
+    <>
+    </>
+  )
+}

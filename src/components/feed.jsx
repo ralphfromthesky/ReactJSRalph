@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Post from "/post.jsx";
+import Post from "./post.jsx";
 import { Box } from "@mui/material";
-import Main from "/main/main.jsx";
-import { useGetdata } from "./react-query/gethooks.tsx";
+import Main from "./main/main.jsx";
+import { useGetdata } from "../react-query/gethooks.tsx";
 
 function Feed() {
   const { refetch } = useGetdata();
@@ -36,7 +36,7 @@ function Feed() {
       name: "Hired as Software Engineer at  Human incubator inc.,",
       id: 2,
       date: "7/19/2023 - 12-19-2024",
-      img: "/image/6.jpg",
+      img: "https://github.com/ralphfromthesky/images/blob/main/6.jpg?raw=true",
       about: "New Job!",
       about2:
         "As a passionate developer with a love for innovation, I couldn't be more excited to dive into this new chapter of my career. And guess what? We're not just pushing boundaries here; we're redefining them! Harnessing the power of Angular and C#, I'll be working alongside some of the brightest minds in the industry to craft cutting-edge solutions that revolutionize how we interact with technology. From sleek user interfaces to robust backend systems, every line of code I write will be dedicated to creating impactful experiences for our users. But it's not just about the tech. At Human Incubator Inc., we're a family. We collaborate, we innovate, and we celebrate each other's successes. Together, we're building more than just software; we're building a community driven by passion and creativity. So here's to new beginnings, endless possibilities, and a future filled with groundbreaking achievements. Let's code our way to greatness!  #NewJob #TechInnovation #AngularCSharp",
@@ -45,7 +45,7 @@ function Feed() {
       name: "Hired as Web Developer at  Fly Asian inc.,",
       id: 3,
       date: "1/19/2023 - up to Present",
-      img: "/image/2.jpg",
+      img: "https://github.com/ralphfromthesky/images/blob/main/2.jpg?raw=true",
       about: "Exciting anouncement! New Job as WEB DEV!",
       about2: `
       Exciting Announcement! 🎉
@@ -67,7 +67,7 @@ function Feed() {
       name: "Teaching kids to </Code>",
       id: 4,
       date: "4/20/2020",
-      img: "/image/7.jpg",
+      img: "https://github.com/ralphfromthesky/images/blob/main/7.jpg?raw=true",
       about: "Teaching my kids to code is much better..",
       about2: `As a parent, one of my greatest joys is sharing my passion for coding with my two amazing kiddos, aged 4 and 10. While some may think that coding is too complex for young minds, I firmly believe that with the right approach, even the youngest learners can grasp the fundamentals of programming.
 
@@ -87,8 +87,8 @@ function Feed() {
       name: "Ralph santolorin - Being a Solo Parent",
       id: 5,
       date: "15/20/2024",
-      img: "/image/solo.jpg",
-      about: "Atlast na my solo parent na",
+      img: "https://github.com/ralphfromthesky/images/blob/main/solo.jpg?raw=true",
+      about: "Atlast na my solo parent na but not happy...",
       about2:
         "Atlast nkakuha na din ng solo parent barangay certificate, what are the benefits??? Solo Parent ID Benefits in the Philippines -Parental Leave, Flexible Work Schedule ,Additional Support and Assistance, Skills Training and Education, Parent Effectiveness Services, Psychosocial Services ,Barangay Certificate, Proof of Financial Status.",
     },
@@ -96,7 +96,7 @@ function Feed() {
       name: "Ralph santolorin",
       id: 6,
       date: "3 times a week / 1.30 hrs",
-      img: "/image/4.jpg",
+      img: "https://github.com/ralphfromthesky/images/blob/main/4.jpg?raw=true",
       about: "GYM Time.....",
       about2: `In the hustle and bustle of daily life, finding time to hit the gym can feel like an impossible task. However, carving out even a small window of time for exercise is essential for building muscle and staying healthy.
 

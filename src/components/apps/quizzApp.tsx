@@ -302,94 +302,15 @@ export const TodoApss = () => {
                 value={a.content}
                 onChange={(e) => handleChange(b, e.target.value)}
               />
-              <button onClick={() => deleteTodos(a.content)}>DEL</button>
+              <button
+                className="bg-[#64d48a] text-white p-1 rounded-[.5rem]"
+                onClick={() => deleteTodos(a.content)}
+              >
+                DEL
+              </button>
             </div>
           </>
         ))}
-      </div>
-    </div>
-  );
-};
-
-export const Calcu = () => {
-  const [number, setnumber] = useState<any>("");
-  const [secondnumber, setsecondnumber] = useState<any>("");
-  const [isNextNumb, setisNextNumb] = useState<boolean>(false);
-  const [operator, setoperator] = useState<any>("");
-  const allnums = [number, secondnumber];
-
-  const firstNum = (nums: string) => {
-    setnumber((prev: any) => prev + nums);
-  };
-  const secondNum = (num: any) => {
-    setsecondnumber(num);
-  };
-  const clickOperator = (operator: any) => {
-    setoperator(operator);
-    setisNextNumb(true);
-  };
-
-  const showTotal = () => {
-    return;
-  };
-
-  return (
-    <div>
-      <div className="flex justify-center mt-[2rem]">
-        Simple calculator{allnums}
-      </div>
-      <div>
-        <div className="border-2 border-black h-[3rem] rounded-sm my-2 flex justify-center items-center font-bold">
-          {number}
-          {operator}
-          {secondnumber}
-        </div>
-        <div className="flex gap-1 flex-wrap">
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => firstNum("0")}
-          >
-            0
-          </span>
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => (isNextNumb ? secondNum("2") : firstNum("1"))}
-          >
-            1
-          </span>
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => firstNum("2")}
-          >
-            2
-          </span>
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => firstNum("3")}
-          >
-            3
-          </span>
-          <span className="border-2 border-[black] p-5 rounded-md">4</span>
-          <span className="border-2 border-[black] p-5 rounded-md">5</span>
-          <span className="border-2 border-[black] p-5 rounded-md">6</span>
-          <span className="border-2 border-[black] p-5 rounded-md">7</span>
-          <span className="border-2 border-[black] p-5 rounded-md">8</span>
-          <span className="border-2 border-[black] p-5 rounded-md">9</span>
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => clickOperator("-")}
-          >
-            -
-          </span>
-          <span
-            className="border-2 border-[black] p-5 rounded-md"
-            onClick={() => clickOperator("+")}
-          >
-            +
-          </span>
-          <span className="border-2 border-[black] p-5 rounded-md">/</span>
-          <span className="border-2 border-[black] p-5 rounded-md">*</span>
-        </div>
       </div>
     </div>
   );
@@ -420,28 +341,28 @@ export const WeatherApp = () => {
     setCity("");
   };
 
-  const { refetch, data, isLoading, isFetching, isError, error } = useQuery<WeatherData>({
-    queryKey: ["city"],
-    enabled: false,
-    queryFn: async () => {
-      try {
-        const response = await axios.get(htttps);
+  const { refetch, data, isLoading, isFetching, isError, error } =
+    useQuery<WeatherData>({
+      queryKey: ["city"],
+      enabled: false,
+      queryFn: async () => {
+        try {
+          const response = await axios.get(htttps);
 
-        if (response.data.cod === "404") {
-          setError(response.data.message); 
-          return null; 
-        } else {
-          setError(null); 
-          setData(response.data); 
-          return response.data;
+          if (response.data.cod === "404") {
+            setError(response.data.message);
+            return null;
+          } else {
+            setError(null);
+            setData(response.data);
+            return response.data;
+          }
+        } catch (err: any) {
+          setError(err.response?.data?.message || "An error occurred");
+          throw new Error(err);
         }
-      } catch (err: any) {
-        setError(err.response?.data?.message || "An error occurred");
-        throw new Error(err); 
-      }
-    },
-
-  });
+      },
+    });
 
   return (
     <div>
@@ -540,3 +461,109 @@ export const WeatherApp = () => {
     </div>
   );
 };
+
+export const Calcu = () => {
+  const [number, setnumber] = useState<number[]>([]);
+  const [current, setcurrent] = useState<string>("");
+  const [operator, setoperator] = useState<string>("");
+  const [totalall, setTotal] = useState<string>("");
+
+  const appendNums = (num: string) => {
+    setcurrent((prev) => prev + num);
+  };
+
+  const addNumber = () => {
+    if(current) {
+      setnumber((prev) => [...prev, parseFloat(current)])
+      setcurrent('')
+    }
+  }
+
+  const setOperation  = (op: 'add') => {
+    addNumber()
+    setoperator(op)
+  }
+
+  const calculateTotal = () => {
+    if (operator === 'add') {
+      const total = number.reduce((acc, num) => acc + num, 0) + (current ? parseFloat(current) : 0);
+      setTotal(total.toString());
+      // clearInputs(); // Clear inputs after calculation
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex justify-center mt-[2rem]">
+       {number} Simple calculator{totalall}
+      </div>
+      <div>
+        <div className="border-2 border-black h-[3rem] rounded-sm my-2 flex justify-center items-center font-bold">
+          {current}
+        </div>
+        <div className="flex gap-1 flex-wrap">
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => appendNums("0")}
+          >
+            0
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => appendNums("1")}
+          >
+            1
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => appendNums("2")}
+          >
+            2
+          </span>
+          <span
+            className="border-2 border-[black] p-5 rounded-md"
+            onClick={() => appendNums("3")}
+          >
+            3
+          </span>
+          <span className="border-2 border-[black] p-5 rounded-md">4</span>
+          <span className="border-2 border-[black] p-5 rounded-md">5</span>
+          <span className="border-2 border-[black] p-5 rounded-md">6</span>
+          <span className="border-2 border-[black] p-5 rounded-md">7</span>
+          <span className="border-2 border-[black] p-5 rounded-md">8</span>
+          <span className="border-2 border-[black] p-5 rounded-md">9</span>
+          {/* <span
+            className="border-2 border-[black] p-5 rounded-md"
+          >
+            -
+          </span> */}
+          <span className="border-2 border-[black] p-5 rounded-md" onClick={() => setOperation('add')}>+</span>
+          {/* <span className="border-2 border-[black] p-5 rounded-md">/</span>
+          <span className="border-2 border-[black] p-5 rounded-md">*</span>*/}
+          <span className="border-2 border-[black] p-5 rounded-md" onClick={() => calculateTotal()}>=</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ArrayMethod = () => {
+
+  const numbers = [1,2,3,4,5,6,7,8,9,10]
+
+  const showEvenNUmber = (Num: number[]): number[] => {
+    return Num.filter((a) => a % 2 === 0)
+  }
+
+
+  return (
+    <>
+    
+    <div>
+      {showEvenNUmber(numbers)}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, asperiores.
+    </div>
+
+    </>
+  )
+}

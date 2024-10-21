@@ -165,7 +165,7 @@ function Navbar() {
           horizontal: "right",
         }}
       >
-        <a href="https://ralphfromthesky.github.io/vueApplication/" target="blank"><MenuItem>go to my VUE js profile</MenuItem></a>
+        <a href="https://ralphfromthesky.github.io/vueApps2/" target="blank"><MenuItem>go to my VUE js profile</MenuItem></a>
         <MenuItem>My account</MenuItem>
         <MenuItem>
           <Button variant="contained" color="primary" onClick={handeDownload}>

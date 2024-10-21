@@ -234,8 +234,8 @@ function UseState() {
         </Typography>
       </Box>
       <Box>
-        <img src="image/useState.png" />
-        <img src="image/useState2.png" />
+        <img src="https://github.com/ralphfromthesky/images/blob/main/useState.PNG?raw=true" />
+        <img src="https://github.com/ralphfromthesky/images/blob/main/useState2.PNG?raw=true" />
       </Box>
       <Box>
         <Typography

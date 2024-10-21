@@ -74,7 +74,7 @@ const Parentprops = () => {
     <Main>
       <Box sx={{ padding: "20px" }}>
         <div>
-          <ReusableButtons title="button ko" bg="red" height="5rem" width="10rem" color="white"/>
+          <ReusableButtons title="button ko" bg="red" height="2.5rem" width="10rem" color="white"/>
         </div>
         <Typography sx={{ color: dark ? "black" : "white" }}>
           this props parent component
