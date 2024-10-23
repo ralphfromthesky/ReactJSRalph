@@ -14,7 +14,7 @@ import UseMemo from "./views/useMemo.jsx";
 import UserReducer from "./views/userReducer.jsx";
 import UseContext from "./views/useContext.jsx";
 import UseCallback from "./views/useCallback.jsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import UseLayoutEffect from "./views/useLayoutEffect.jsx";
 import UseImperativeHandle from "./views/useImperativeHandle.jsx";
 import ReactQuery from "./views/reactQuery.jsx";
@@ -38,9 +38,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Feed />} />
+        <Route path="/ReactJSRalph" element={<Navigate to="/aboutMe"/>} />
         {/* for route with no register path="*" */}
-        <Route path="*" element={<PageNotFound />} />
+        {/* <Route path="*" element={<PageNotFound />} /> */}
         <Route path="/aboutMe" name="ralph" element={<Feed />} />
         <Route path="/useState" element={<UseState />} />
         <Route path="/feed" element={<Feed />} />

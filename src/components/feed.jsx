@@ -9,6 +9,7 @@ function Feed() {
 
   useEffect(() => {
     refetch();
+    console.log(import.meta.env.VITE_APP_MODE)
   }, []);
 
   const happening = [
