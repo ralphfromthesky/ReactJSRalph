@@ -1,1 +1,0 @@
-import{j as a,M as i,B as o,T as r}from"./index-5Xu4HqGB.js";const n=()=>a.jsx(i,{children:a.jsx(o,{children:a.jsx(r,{variant:"h6",color:"initial",children:"lazy loading or code splitting"})})});export{n as default};
