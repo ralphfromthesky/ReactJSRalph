@@ -120,7 +120,7 @@ type login = {
   balance: Number;
   name: String;
   isVip: Boolean;
-  setIslogin: (isLogin: Boolean, name: String) => void
+  setIslogin: (isLogin: Boolean, name: String) => void;
 };
 
 export const setLogin = create<login>((set) => ({
@@ -128,7 +128,26 @@ export const setLogin = create<login>((set) => ({
   name: "",
   balance: 10000,
   isVip: false,
-  setIslogin: (isLogin, name) => set({isLogin, name})
+  setIslogin: (isLogin, name) => set({ isLogin, name }),
 }));
 
+type objectData = {
+  name: string;
+  balance: number;
+  isFuck: boolean;
+  whatTheFucks: (a: string, b: number, go: boolean) => void;
+};
+
+export const UseObjectData = create<objectData>((set) => ({
+  name: 'jasmine',
+  balance: 1000000,
+  isFuck: false,
+  whatTheFucks: (a, b, c) => {
+    set((state) => ({
+      name: a,
+      balance: b,
+      isFuck: c
+    }));
+  },
+}));
 

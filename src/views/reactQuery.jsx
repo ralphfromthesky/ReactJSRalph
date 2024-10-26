@@ -3,15 +3,13 @@ import Main from "../components/main/main.jsx";
 import { Box, Typography, Button } from "@mui/material";
 import { useGetdata, useHandleDeletion } from "../react-query/gethooks.tsx";
 import GlobalModal from "../components/material/globalModal.jsx";
-import { changeTheme, closeglobalModal, passDataFromComponent } from "../store/store.tsx";
+import { changeTheme, passDataFromComponent } from "../store/store.tsx";
 import Loader from "../components/material/loader.tsx";
 import GlobalForm from "../components/material/globalForm.tsx";
 import PositionedSnackbar from "../components/material/snackbar.tsx";
 import Checkbox from "@mui/material/Checkbox";
 import AutoDeleteIcon from "@mui/icons-material/AutoDelete";
 import AddIcon from "@mui/icons-material/Add";
-
-
 
 
 const ReactQuery = () => {
@@ -25,7 +23,6 @@ const ReactQuery = () => {
   const [openModal, setOpenModal] = useState(false);
   const [newState, setNewState] = useState(true);
   const { isLoading, isSuccess } = useGetdata();
-  const [checkedItems, setCheckedItems] = useState({});
 
 
   const closeModal = () => {
@@ -43,7 +40,6 @@ const ReactQuery = () => {
   useEffect(() => {
     // getThisData(useData)
     getThisData(useData.data)
-    console.log(useData.data?.food)
   }, [])
   return (
     <Main>

@@ -7,6 +7,7 @@ import {
   setLogin,
   setOpenGlobalModal,
   useStore,
+  UseObjectData,
 } from "../store/store.tsx";
 import ZustandChild1 from "./zustandChild1.tsx";
 import ZustandChild4 from "./zustandChild4.tsx";
@@ -14,6 +15,8 @@ import ZustandChild3 from "./zustandChild3.tsx";
 import ZustandChild2 from "./zustandChild2.tsx";
 import GlobalModal from "../components/material/globalModal.jsx";
 import ZustandAdmin from "./zustandAdmin.tsx";
+import ZustandA from "./zustandA.tsx";
+import ZustandB from "./zustandB.tsx";
 
 const Zustand = () => {
   const { show } = setData();
@@ -23,15 +26,16 @@ const Zustand = () => {
   const { setOpenModal, openModal, setCloseModal, noteFromZustand } =
     setOpenGlobalModal();
 
+  const { name: eman, balance, isFuck, whatTheFucks } = UseObjectData();
+
   const { isLogin, setIslogin, name: game } = setLogin();
   const [name, setName] = useState<any>("");
   const logIn = () => {
     if (name === "") {
       alert("please type name!");
-      return
+      return;
     }
     setIslogin(true, game);
-
   };
 
   return (
@@ -76,12 +80,32 @@ const Zustand = () => {
                 onChange={(e) => setName(e.target.value)}
               />
               <Button variant="contained" className="mt-[1rem]" onClick={logIn}>
-                login
+                login {eman} - {balance} - {isFuck}
               </Button>
             </div>
           )}
 
-          <div>{isLogin && <ZustandAdmin anoNameMo={name}/>}</div>
+          <div>{isLogin && <ZustandAdmin anoNameMo={name} />}</div>
+          <div>
+            <button
+              className="bg-[red] p-[1rem]"
+              onClick={() => whatTheFucks("ano gagawing mo!", 5000, true)}
+            >
+              TRY CLICK!
+            </button>
+          </div>
+          {isFuck && (
+            <>
+              <div>
+                show this WHAT THE F?!! {eman} {balance}
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="h-[10rem] flex justify-between mt-2 border-2 border-black">
+          <ZustandA />
+          <ZustandB />
         </div>
       </Box>
       <GlobalModal
